@@ -1,7 +1,7 @@
 {
     "default":{
         "paths":[
-            "features/addToCart.feature"
+            "features"
         ],
         "formatOptions":{
             "snippetInterface":"async-await"
@@ -11,7 +11,13 @@
         "require":[
             "step-definitions/*steps.js",
             "setup/hooks.js"
+    ], "format": [
+        "progress-bar",
+        "html:test-results/cucumber_report.html",
+        "json:test-results/cucumber_report.json",
+        "rerun:@rerun.txt"
     ]
+
 
     }
 }     
