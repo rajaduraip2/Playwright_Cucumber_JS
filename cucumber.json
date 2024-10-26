@@ -1,0 +1,17 @@
+{
+    "default":{
+        "paths":[
+            "features/addToCart.feature"
+        ],
+        "formatOptions":{
+            "snippetInterface":"async-await"
+        },
+        "publish-quiet":true,
+        "dryRun":false,
+        "require":[
+            "step-definitions/*steps.js",
+            "setup/hooks.js"
+    ]
+
+    }
+}     
