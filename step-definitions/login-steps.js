@@ -21,8 +21,6 @@ Given('User click on the login link', async function () {
 
 Given('User enter the username as {string}', async function (username) {
      await expect(global.page.title()).resolves.toBe('Account Login');
-//    const title= await  global.page.title();
-//    console.log(title);
 await  global.page.locator("#input-email").fill(username);
          
          });
@@ -51,7 +49,7 @@ Then('Login should be success', async function () {
 
 
 When('Login should fail', async function () {
-    await expect(await  global.page.locator("//*[contains(@class,'alert-dismissible')]")).toBeVisible();
+    await expect(await  global.page.locator("//*[contains(@class,'alert-dismissibles')]")).toBeVisible();
     const alertText=await  global.page.locator("//*[contains(@class,'alert-dismissible')]").textContent();
     console.log(alertText );
          

@@ -1,4 +1,4 @@
-const {BeforeAll,Before,After,AfterAll,BeforeStep,AfterStep,setDefaultTimeout,attach}= require('@cucumber/cucumber');
+const {BeforeAll,Before,After,AfterAll,BeforeStep,AfterStep,setDefaultTimeout,Status}= require('@cucumber/cucumber');
 const{chromium}=require('@playwright/test');
 const path = require('path');
 const playwright= require('playwright')
@@ -26,23 +26,21 @@ After({timeout:10*1000},async()=>{
     await global.context.close();
 });
 
-// After({timeout:10*1000},async(scenario)=>{
-//     if(scenario.result.status=FAILED){
+After({timeout:10*1000},async function({pickle,result}){
+   if(result.status==Status.FAILED){
 
-//     const img= await global.page.screenshot({
-//         path:`test-results/screenshots/${scenario.pickle.name}.png`,
-//         fullPage: true
-//     });
-//  await this.attach(img,"image/png");
+    var img= await global.page.screenshot({
+        path:`test-results/screenshots/${pickle.name}.png`,
+        fullPage: true
+    });
+ await this.attach(img,"image/png");   
+   }
+    await global.page.close();
+    await global.context.close();
 
-      
-        
-//     }
-//     await global.page.close();
-//     await global.context.close();
+})
 
-// })
-
+//close the page and context after each test.
 
 
 AfterAll({timeout:10*1000},async()=>{
