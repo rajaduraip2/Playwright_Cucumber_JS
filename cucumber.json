@@ -16,8 +16,30 @@
         "html:test-results/cucumber_report.html",
         "json:test-results/cucumber_report.json",
         "rerun:@rerun.txt"
-    ]
+    ],
+    "parallel":3
 
 
+    },
+
+    "rerun":{
+        "formatOptions":{
+            "snippetInterface":"async-await"
+        },
+        "publish-quiet":true,
+        "dryRun":false,
+        "require":[
+            "step-definitions/*steps.js",
+            "setup/hooks.js"
+    ], "format": [
+        "progress-bar",
+        "html:test-results/cucumber_report.html",
+        "json:test-results/cucumber_report.json",
+        "rerun:@rerun.txt"
+    ],
+    "parallel":3
+
+
+    
     }
 }     

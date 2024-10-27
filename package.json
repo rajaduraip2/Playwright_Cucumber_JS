@@ -4,8 +4,13 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js test",
+    "failure": "cucumber-js -p rerun @rerun.txt",
     "report": "node reporter.js",
-     "test:report": "npm-run-all --continue-on-error test report"
+    "test:report": "npm-run-all --continue-on-error test report",
+    "failure:report": "npm-run-all --continue-on-error failure report",
+    "test:report:dev": "cross-env test_env=dev npm-run-all --continue-on-error test report",
+    "test:report:qa": "cross-env test_env=qa npm-run-all --continue-on-error test report",
+    "test:report:prod": "cross-env test_env=prod npm-run-all --continue-on-error test report"
   },
   "keywords": [],
   "author": "Rajadurai P",
@@ -15,7 +20,9 @@
     "@cucumber/cucumber": "^11.0.1",
     "@playwright/test": "^1.48.1",
     "@types/node": "^22.8.0",
+    "cross-env": "^7.0.3",
     "cucumber-html-reporter": "^6.0.0",
+    "dotenv": "^16.4.5",
     "npm-run-all": "^4.1.5",
     "playwright": "^1.48.2"
   },
