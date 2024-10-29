@@ -1,14 +1,15 @@
 const {Given,When,Then}=require("@cucumber/cucumber");
  const {expect}=require("@playwright/test");
  const ENV= require('../support/env/env.js')
+ const logger= require('../setup/logger.js');
 
 
 
 
 Given('User navigates to the application', async function () {
-      console.log(">>>>>>>>>>>>>"+ ENV.EXEC_ENV);
+     logger.info(">>>>>>>>>>>>>"+ ENV.EXEC_ENV);
     await  global.page.goto(ENV.BASE_URL);
-    await expect(global.page.title()).resolves.toBe('Your Store');
+   await expect(global.page.title()).resolves.toBe('Your Store');
  
   });
 

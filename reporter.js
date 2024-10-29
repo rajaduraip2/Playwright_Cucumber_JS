@@ -1,4 +1,7 @@
 var reporter = require('cucumber-html-reporter');
+const cukemerge = require('cucumber-json-merge');
+const fs = require('fs');
+
 
 var options = {
         theme: 'bootstrap',

@@ -10,7 +10,8 @@
     "failure:report": "npm-run-all --continue-on-error failure report",
     "test:report:dev": "cross-env test_env=dev npm-run-all --continue-on-error test report",
     "test:report:qa": "cross-env test_env=qa npm-run-all --continue-on-error test report",
-    "test:report:prod": "cross-env test_env=prod npm-run-all --continue-on-error test report"
+    "test:report:prod": "cross-env test_env=prod npm-run-all --continue-on-error test report",
+    "test:report:qa:failure:report": "cross-env test_env=qa npm-run-all --continue-on-error failure report"
   },
   "keywords": [],
   "author": "Rajadurai P",
@@ -22,11 +23,15 @@
     "@types/node": "^22.8.0",
     "cross-env": "^7.0.3",
     "cucumber-html-reporter": "^6.0.0",
+    "cucumber-json-merge": "^0.0.8",
     "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
     "npm-run-all": "^4.1.5",
     "playwright": "^1.48.2"
   },
   "dependencies": {
-    "chalk": "^5.3.0"
+    "chalk": "^5.3.0",
+    "winston": "^3.15.0",
+    "winston-daily-rotate-file": "^5.0.0"
   }
 }
