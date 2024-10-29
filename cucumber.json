@@ -12,8 +12,8 @@
             "step-definitions/*steps.js",
             "setup/hooks.js"
     ], "format": [
-        "progress-bar",
-        "html:test-results/cucumber_report.html",
+        "@cucumber/pretty-formatter",
+         "junit:test-results/testResuls.xml",
         "json:test-results/cucumber_report.json",
         "rerun:@rerun.txt"
     ],
@@ -32,9 +32,9 @@
             "step-definitions/*steps.js",
             "setup/hooks.js"
     ], "format": [
-        "progress-bar",
-        "html:test-results/cucumber_report.html",
-        "json:test-results/cucumber_report.json"
+        "@cucumber/pretty-formatter",
+        "json:test-results/cucumber_reportRerun.json",
+        "junit:test-results/testResulsRerun.xml"
     ],
     "parallel":3
 

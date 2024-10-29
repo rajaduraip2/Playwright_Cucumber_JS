@@ -19,6 +19,7 @@
   "description": "",
   "devDependencies": {
     "@cucumber/cucumber": "^11.0.1",
+    "@cucumber/pretty-formatter": "^1.0.1",
     "@playwright/test": "^1.48.1",
     "@types/node": "^22.8.0",
     "cross-env": "^7.0.3",

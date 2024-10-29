@@ -15,6 +15,7 @@ var options = {
             "Test Environment": "STAGING",
             "Browser": "Chrome  54.0.2840.98",
             "Platform": "Windows 10",
+            'Test executed at': new Date().toJSON().slice(0, 16).replace(':', '-'),
             "Parallel": "Scenarios",
             "Executed": "Remote"
         },
