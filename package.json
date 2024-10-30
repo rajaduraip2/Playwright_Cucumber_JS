@@ -11,7 +11,7 @@
     "test:report:dev": "cross-env test_env=dev npm-run-all --continue-on-error test report",
     "test:report:qa": "cross-env test_env=qa npm-run-all --continue-on-error test report",
     "test:report:prod": "cross-env test_env=prod npm-run-all --continue-on-error test report",
-    "test:report:qa:failure:report": "cross-env test_env=qa npm-run-all --continue-on-error failure report"
+    "test:report:qa:failure:report": "cross-env test_env=qa npm-run-all --continue-on-error test failure report"
   },
   "keywords": [],
   "author": "Rajadurai P",
