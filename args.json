@@ -3,6 +3,6 @@
   "env": "qa",
   "device": "Desktop Chrome",
   "report": "local",
-  "headless": false,
+  "headless": true,
   "rerun": true
 }

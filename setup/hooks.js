@@ -12,15 +12,15 @@ async function ensureFolderExists(folderName) {
   const folderPath = path.join(baseDir, folderName);
   if (!fs.existsSync(folderPath)) {
       fs.mkdirSync(folderPath, { recursive: true });
-      console.log(`Folder created: ${folderPath}`);
+      console.log(`Folder created: ${folderName}`);
   } else {
-      console.log(`Folder already exists: ${folderPath}`);
+      console.log(`Folder already exists: ${folderName}`);
   }
 }
 const ENV= require('../support/env/env.js');
 
 const options ={
-    headless:false,
+    headless:true,
     slowMo:10
 }
 setDefaultTimeout(12*1000);
