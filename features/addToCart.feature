@@ -1,10 +1,10 @@
-Feature: User Authentication tests
+Feature: User Add to cart 
 
   Background: 
     Given User navigates to the application
     And User click on the login link
 
-  @smoke @reg
+  @smoke @qa @reg
   Scenario: Login should be success
     And User enter the username as "Playwright001@rajtest.com"
     And User enter the password as "Crate@123"

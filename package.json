@@ -3,15 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js test",
+    "cucumber": "cucumber-js",
+    "test": "node ./index.js", 
     "failure": "cucumber-js -p rerun @rerun.txt",
-    "report": "node reporter.js",
-    "test:report": "npm-run-all --continue-on-error test report",
-    "failure:report": "npm-run-all --continue-on-error failure report",
-    "test:report:dev": "cross-env test_env=dev npm-run-all --continue-on-error test report",
-    "test:report:qa": "cross-env test_env=qa npm-run-all --continue-on-error test report",
-    "test:report:prod": "cross-env test_env=prod npm-run-all --continue-on-error test report",
-    "test:report:qa:failure:report": "cross-env test_env=qa npm-run-all --continue-on-error test failure report"
+    "report": "node reporter.js"
   },
   "keywords": [],
   "author": "Rajadurai P",
@@ -22,6 +17,8 @@
     "@cucumber/pretty-formatter": "^1.0.1",
     "@playwright/test": "^1.48.1",
     "@types/node": "^22.8.0",
+    "argparse": "^2.0.1",
+    "child_process": "^1.0.2",
     "cross-env": "^7.0.3",
     "cucumber-html-reporter": "^6.0.0",
     "cucumber-json-merge": "^0.0.8",

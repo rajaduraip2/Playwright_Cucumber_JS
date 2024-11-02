@@ -8,7 +8,11 @@ const {Given,When,Then}=require("@cucumber/cucumber");
 
 Given('User navigates to the application', async function () {
      logger.info(">>>>>>>>>>>>>"+ ENV.EXEC_ENV);
-    await  global.page.goto(ENV.BASE_URL);
+     await global.context.setOffline(false);
+    await  global.page.goto(ENV.BASE_URL, {
+     waitUntil: 'networkidle',
+ });
+
    await expect(global.page.title()).resolves.toBe('Your Store');
  
   });

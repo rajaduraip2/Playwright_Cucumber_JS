@@ -1,8 +1,23 @@
 const {BeforeAll,Before,After,AfterAll,BeforeStep,AfterStep,setDefaultTimeout,Status}= require('@cucumber/cucumber');
-const{chromium}=require('@playwright/test');
+const{devices}=require('@playwright/test');
 const path = require('path');
 const playwright= require('playwright');
-require('dotenv').config({ path: `support/env/.env.${process.env.test_env}` });
+const fs = require('fs');
+const device = process.env.DEVICE;
+const folderName = 'test-results';
+const screenshotFolder='test-results/screenshots';
+
+async function ensureFolderExists(folderName) {
+  const baseDir = path.join(__dirname, '..');
+  const folderPath = path.join(baseDir, folderName);
+  if (!fs.existsSync(folderPath)) {
+      fs.mkdirSync(folderPath, { recursive: true });
+      console.log(`Folder created: ${folderPath}`);
+  } else {
+      console.log(`Folder already exists: ${folderPath}`);
+  }
+}
+const ENV= require('../support/env/env.js');
 
 const options ={
     headless:false,
@@ -11,29 +26,36 @@ const options ={
 setDefaultTimeout(12*1000);
 
 BeforeAll({timeout:10*1000},async()=>{
-    global.browser= await playwright.chromium.launch(options);
+  await ensureFolderExists(folderName);
+  await ensureFolderExists(screenshotFolder);
+    fs.rmSync('./test-results/screenshots', { recursive: true, force: true });
+    const currentBrowser = devices[device];
 
-    // switch (currentBrowser?.defaultBrowserType) {
-    //     case 'chromium':
-    //       global.browser = await playwright.chromium.launch(options);
-    //       break;
-    //     case 'firefox':
-    //       global.browser = await playwright.firefox.launch(options);
-    //       break;
-    //     case 'webkit':
-    //       global.browser = await playwright.webkit.launch(options);
-    //       break;
-    //     default:
-    //       global.browser = await playwright.chromium.launch(options);
-    //   }
-    // });
+    switch (currentBrowser?.defaultBrowserType) {
+        case 'chromium':
+          global.browser = await playwright.chromium.launch(options);
+          break;
+        case 'firefox':
+          global.browser = await playwright.firefox.launch(options);
+          break;
+        case 'webkit':
+          global.browser = await playwright.chromium.launch(options);
+          break;
+        default:
+          global.browser = await playwright.chromium.launch(options);
+      }
+    });
 
-    
-});
+
 
 Before({timeout:10*1000},async()=>{
-
-    global.context= await global.browser.newContext();
+   
+    const currentBrowser = devices[device];
+    //Setting the device view port and screensize using playwright default config
+    global.context= await global.browser.newContext({
+        ...currentBrowser,
+        baseURL:ENV.BASE_URL,
+    });
     global.page=await global.context.newPage();
 });
 

@@ -4,14 +4,14 @@ Feature: User Authentication tests
     Given User navigates to the application
     And User click on the login link
 
-  @smoke @reg
+  @smoke @reg @qa
   Scenario: Login should be success
     And User enter the username as "Playwright001@rajtest.com"
     And User enter the password as "Crate@123"
     When User click on the login button
     Then Login should be success
 
-  @smoke @reg
+  @smoke @reg @qa
   Scenario: Login should not be success
     Given User enter the username as "koushik@rajTest.com"
     Given User enter the password as "Passkoushik"

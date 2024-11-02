@@ -1,0 +1,64 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "command": "npm start",
+            "name": "Run npm start",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "name":"Debug Test",
+            "type": "node-terminal",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "command": "npm run test -- --device \"${input:device}\" --env \"${input:site}\" --tags \"@${input:tags}\" ",
+            "env": {
+                "BASE_URL": "https://qa-www.crateandbarrel.com",
+                "HEADLESS": "${input:headless}"
+              },
+              "presentation": {
+                "hidden": false,
+                "group": "Debugging",
+                "order": 3
+              }
+        
+        }
+    ],
+    "inputs": [
+        {
+          "type": "pickString",
+          "id": "tags",
+          "description": "Tags of tests to run",
+          "options": ["dev","Smoke", "Regression"],
+          "default": "dev"
+        },
+         {
+          "type": "pickString",
+          "id": "device",
+          "description": "Type of device to use",
+          "options": ["Desktop Chrome", "Desktop Safari", "iPhone 13", "Pixel 5"],
+          "default": "Desktop Chrome"
+        },
+        {
+          "type": "pickString",
+          "id": "site",
+          "description": "Website to use",
+          "options": ["qa", "UAT", "Prod"],
+          "default": "qa"
+        },
+        {
+          "type": "pickString",
+          "id": "headless",
+          "description": "Run tests in headless mode",
+          "options": ["true","false"],
+          "default": "false"
+        }
+
+      ]
+}
