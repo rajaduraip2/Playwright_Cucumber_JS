@@ -17,8 +17,8 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npm run test:report:qa
+    - name: Run Playwright Regression Automation scripts in QA
+      run: npm run test -- --device "Desktop Chrome" --env "qa" --tags "@reg" --report "local" --rerun
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
