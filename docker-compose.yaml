@@ -1,0 +1,28 @@
+
+services:
+  playwright-cucumber:
+    build: .
+    container_name: playwright_cucumber_js
+    environment:
+      HEADLESS: "true"   # Headless mode for Playwright
+      NODE_ENV: "production"  # Optional: Add more environment variables here
+    volumes:
+      - .:/repo  # Mounts the local project directory to the container
+    command: npm run test -- --device "Desktop Chrome" --env "qa" --tags "@reg" --report "local" --rerun --headless
+    # Replace this with your customized execution command
+    ports:
+      - "3000:3000"  # Expose ports if necessary (e.g., for web applications)
+    networks:
+      - playwright-network
+
+networks:
+  playwright-network:
+    driver: bridge
+
+
+# docker-compose up -d  for start a container
+
+#docker-compose ps to verify the container running
+
+
+
