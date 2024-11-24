@@ -1,8 +1,0 @@
-{
-  "tags": "(@reg) and @qa",
-  "env": "qa",
-  "device": "Desktop Chrome",
-  "report": "local",
-  "headless": true,
-  "rerun": true
-}

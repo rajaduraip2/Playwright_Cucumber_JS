@@ -20,7 +20,7 @@ async function ensureFolderExists(folderName) {
 const ENV= require('../support/env/env.js');
 
 const options ={
-    headless:true,
+    headless:ENV.HEADLESS === 'true',
     slowMo:10
 }
 setDefaultTimeout(12*1000);
